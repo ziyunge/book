@@ -1,0 +1,63 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>最新{$list_name}和日本{$list_name}大全-好看的{$list_name}_动画片大全_{$list_name}排行榜_2014最新好看的{$list_name}推荐 - {$sitename}</title>
+<meta name="keywords" content="最新{$list_name},最新{$list_name},2014最新{$list_name},好看的{$list_name}" />
+<meta name="description" content="没得比网是{$list_name}迷的家园，这里2014好看的{$list_name}全都有，新番连载最新{$list_name}，日本{$list_name}和{$list_name}大全以及{$list_name}推荐，可以这么说最新好看的{$list_name}这里最给力，一起happy吧。" />
+<include file="Home:home_header" />
+</head>
+<body>
+<a name="top"></a>
+<php>$vod_stars = ff_mysql_vod('limit:14;stars:3,4,5;cid:'.$list_id.';order:vod_addtime desc');
+$array_letter = array('a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z');</php>
+<include file="Home:pp_header" />
+<div class="wrap clearfix">
+<div id="fenlei">
+<div class="lanmu">
+<ul>
+<a href="{$list_url}" title="{$list_name}" target="_self">字母模式</a> 
+<a href="{:UU('Home-vod/type',array('id'=>$list_id,'wd'=>'','letter'=>'','year'=>0,'area'=>'','order'=>'addtime','p'=>1),false,true)}" target="_self"><p>按时间</p></a>
+<a href="{:UU('Home-vod/type',array('id'=>$list_id,'wd'=>'','letter'=>'','year'=>0,'area'=>'','order'=>'hits','p'=>1),false,true)}" target="_self"><p>按人气</p></a>
+<a href="{:UU('Home-vod/type',array('id'=>$list_id,'wd'=>'','letter'=>'','year'=>0,'area'=>'','order'=>'gold','p'=>1),false,true)}" target="_self"><p>按热评</p></a>
+<a href="{:UU('Home-vod/type',array('id'=>$list_id,'wd'=>'','letter'=>'','year'=>0,'area'=>'','order'=>'filmtime','p'=>1),false,true)}" target="_self"><p>按上映</p></a> 
+<a href="/detail/hot.html"><p>总排行</p></a>
+<a href="/detail/yuetop.html"><p>月排行</p></a>
+</ul>
+</div>
+<div class="xc"><a href="/detail/tv.html"><strong>电视直播</strong></a></div>
+</div>
+    <div class="top960">{:getadsurl('top960')}</div>
+<div class="box">
+    <div class="top"><h3>{$list_name}家园</h3></div>
+    <ul class="imgh4 index_stars"><fflist name="vod_stars" id="ppvod"><li><p><a href="{$ppvod.vod_readurl}"><img class="lazy" data-original="{$ppvod.vod_picurl}" src="" alt="{$ppvod.vod_name}" /></a></p><h4><a href="{$ppvod.vod_readurl}" title="{$ppvod.vod_name}">{$ppvod.vod_name|msubstr=0,12}</a></h4></li></fflist></ul>
+</div>
+    <fflist name="array_letter" id="letter">
+    <div class="box">
+     	<php>$vod_num = ff_mysql_vod('cid:'.$list_id.';letter:'.$letter.';limit:200;order:vod_letter asc,vod_addtime desc');</php>
+       	<div class="top"><h3><span>共<strong>{:count($vod_num)}</strong>部</span>{$letter|strtoupper}<a name="{$letter}"></a></h3></div>
+        <ul class="hang1"><fflist name="vod_num" id="ppvod" mod="4">
+        <li style="padding-left:5px"><a href="{$ppvod.vod_readurl}" title="{$ppvod.vod_name}">{$ppvod.vod_name|msubstr=0,12,'utf-8',true|getcolor=$ppvod['vod_color']}</a></li>
+    	<eq name="mod" value="0"></ul><in name="i" value="8,16,24,32,40,48,56,64,72,80,88,96,104,112,120,128,136,144,152,160,168,176,184,192"><ul class="hang1"><else /><ul class="hang2"></in></eq>
+    	</fflist></ul>
+    </div>
+    </fflist>
+    <div class="box">
+     	<php>$vod_num = ff_mysql_vod('cid:'.$list_id.';letter:1,2,3,4,5,6,7,8,9;limit:200;order:vod_letter asc,vod_addtime desc');</php>
+       	<div class="top"><h3><span>共<strong>{:count($vod_num)}</strong>部</span>数字<a name="num"></a></h3></div>
+        <ul class="hang1"><fflist name="vod_num" id="ppvod" mod="4">
+        <li style="padding-left:5px"><a href="{$ppvod.vod_readurl}" title="{$ppvod.vod_name}">{$ppvod.vod_name|msubstr=0,12,'utf-8',true|getcolor=$ppvod['vod_color']}</a></li>
+    	<eq name="mod" value="0"></ul><in name="i" value="8,16,24,32,40,48,56,64,72,80,88,96,104,112,120,128,136,144,152,160,168,176,184,192"><ul class="hang1"><else /><ul class="hang2"></in></eq>
+    	</fflist></ul>
+    </div>
+</div>
+<div class="uleter">
+<h4 class="uhtitle">{$list_name}字母查询</h4>
+<ul class="letter">
+<fflist name="array_letter" id="letter">
+<li><a href="#{$letter}">{$letter|strtoupper}</a></li></fflist><li><a href="#num">1-9</a></li><li><span><a href="#top">回到顶部</a></span></li>
+</ul>
+</div>
+<include file="Home:pp_footer" />  
+</body>
+</html>

@@ -1,0 +1,47 @@
+<div id="dingbu">
+<div class="wrap">
+  <div id="dingbu-a">
+    <ul>
+      <li><a href="/zhuomian.php">把本站放到桌面</a></li>
+      <li><a href="{$url_guestbook}">留言反馈</a></li>
+      <li><a href="{:ff_mytpl_url('my_new.html')}">今日更新</a></li>
+      <li><a href="{$root}" onClick="this.style.behavior='url(#default#homepage)';this.setHomePage(this.href);return(false);" >设为主页</a></li>
+      <li class="wuxian"><a href="javascript:void(0)" id="fav">收藏本站</a></li>
+    </ul>
+  </div>
+  <div id="history"><a href="javascript:void(0);" class="list_hist"><strong>您的播放记录</strong></a></div>
+</div>
+</div>
+<div class="header wrap">
+    <div class="logo fl"><a href="{$root}"><img src="{$tpl}images/logo.gif" alt="{$sitename}"/></a></div>
+    <div class="search fr">
+    	<form id="ffsearch" name="ffsearch" method="post" action="{$root}index.php?s=vod-search"><input maxlength="100" type="text" name="wd" id="wd" class="sousuo-a" value="{$wd}" autocomplete="off" /><span class="sousuo-b"><input type="submit" value="搜索"  class="sousuo-c" /></span></form>
+    	<div class="hots">{$hotkey}</div>
+    </div>
+</div>
+<div class="nav">
+	<div class="wrap">
+    <a href="{$root}"><strong>首页</strong></a>
+    <volist name="list_menu" id="ppvod">
+        <in name="ppvod.list_id" value="2">
+        <volist name="ppvod.son" id="ppvodson">
+        <a <eq name="ppvodson.list_id" value="$list_id">class="on"</eq> href="{$ppvodson.list_url}" title="{$ppvodson.list_name}">{$ppvodson.list_name}</a>
+        </volist>
+        </in>
+    </volist>  
+    </div>
+</div>
+<div class="query">
+<div class="wrap">
+    	<div class="subnav"><volist name="list_menu" id="ppvod">
+            <in name="ppvod.list_id" value="1">
+            <volist name="ppvod.son" id="ppvodson">
+            <a href="{$ppvodson.list_url}" target="_self">{$ppvodson.list_name}电影</a>&nbsp;|&nbsp;
+            </volist>
+            </in>
+        </volist><a href="{:getlistname(23,'list_url')}" title="记录片">记录片</a></div>
+        <div class="share">
+<span>分享到：</span><div class="bdsharebuttonbox"><a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a><a href="#" class="bds_bdhome" data-cmd="bdhome" title="分享到百度新首页"></a><a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a><a href="#" class="bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a><a href="#" class="bds_tqq" data-cmd="tqq" title="分享到腾讯微博"></a><a href="#" class="bds_douban" data-cmd="douban" title="分享到豆瓣网"></a><a href="#" class="bds_renren" data-cmd="renren" title="分享到人人网"></a><a href="#" class="bds_tieba" data-cmd="tieba" title="分享到百度贴吧"></a><a href="#" class="bds_baidu" data-cmd="baidu" title="分享到百度搜藏"></a><a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a><a href="#" class="bds_more" data-cmd="more"></a></div>
+</div>
+</div>
+</div>

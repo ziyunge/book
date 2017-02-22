@@ -1,0 +1,8 @@
+<title>《{$vod_name}》<eq name="list_pid" value="2">{$vod_playername}{$vod_jiname}高清在线观看<else />-{$vod_playername}高清在线观看</eq> - {$list_name} - 优酷、爱奇艺、搜狐、腾讯、土豆、风行、cntv、乐视视频支持 - {$sitename}</title>
+<in name="list_pid" value="2,3">
+<meta name="keywords" content="{$vod_name}{:str_replace(array('第','集'),array('',''),$vod_jiname)},{$vod_name}{$vod_jiname}高清在线观看,{$vod_name}全集{:str_replace(array('第','集'),array('',''),$vod_jiname)}">
+<meta name="description" content="{$vod_name}{$vod_playername}高清在线观看，{$vod_name}剧情：{$vod_content|h|msubstr=0,200}">
+<else />
+<meta name="keywords" content="{$vod_name}{$vod_playername}高清在线观看">
+<meta name="description" content="{$vod_name}{$vod_playername}高清在线观看，{$vod_name}剧情：{$vod_content|h|msubstr=0,200}">
+</in>

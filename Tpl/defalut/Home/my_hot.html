@@ -1,0 +1,30 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>{$sitename} - 总人气排行榜单</title>
+<meta name="keywords" content="{$sitename},总人气,排行榜" />
+<meta name="description" content="{$sitename},总人气,排行榜" />
+<include file="Home:home_header" />
+</head>
+<body>
+<include file="Home:pp_header" />
+<div class="wrap clearfix">
+	<div class="top960">{:getadsurl('top960')}</div>
+    <div class="box"><div class="top"><h3><span>今天到目前已更新<strong>{:getcount(999)}</strong>部</span><label><a href="new.html">最新更新节目</a></label></h3></div></div>
+    <php>$cid_arr = array(3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,23);</php>
+    <fflist name="cid_arr" id="ppcid" key="k">
+    <php>$vod_yue = ff_mysql_vod('cid:'.$ppcid.';limit:10;order:vod_hits desc');</php>
+    <in name="ppcid" value="3,6,9,12,15,18"><div class="top2a117"><else /><div class="top2a116"></in>
+      <div class="top2a1_h"><span>总排行</span><b><a href="{:getlistname($ppcid,'list_url')}">{:getlistname($ppcid)}</a></b></div>
+      <ul>
+      <fflist name="vod_yue" id="ppvod">
+        <li><span>{$ppvod.vod_addtime|getcolordate='m-d',###}</span><b>{$i}</b><a href="{$ppvod.vod_readurl}" title="{$ppvod.vod_name}">{$ppvod.vod_name|msubstr=0,12}</a></li>
+      </fflist>
+      </ul>
+    </div>
+    </fflist>
+</div>
+<include file="Home:pp_footer" />
+</body>
+</html>
